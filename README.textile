@@ -42,3 +42,14 @@ h4. Notes
 This cookbook will need probably two dozen responsibilities added to it before I'd be satisfied.
 
 Sphinx and its plugins are notorious for being much easier to develop and use than it is to support in production, and we need to get there.  Sphinx will not come out of the box on EY for the indeterminate future, and so to prepare for the worst case scenario, these cookbooks will need significant work.
+
+h3.  memcached_gem
+
+This cookbook installs the memcached gem and symlinks the configuration into place.
+
+h4. Notes
+
+It would be better if the recipe were more explicit about the particular gem, and I'd be even happier if that piece of the responsibility could be moved inside the application itself.
+
+This cookbook should be about supplementing EY's memcached cookbook (which they will actually support) by ensuring that the application has the ability to write a proper configuration before symlinking it.
+
