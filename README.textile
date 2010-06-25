@@ -32,3 +32,13 @@ Copying staging.rb in particular would be more appropriate if it only happened i
 The thinking_sphinx configuration should be done in its own recipes.
 
 Building an index on every deploy may not be wanted-- it can become expensive, and might overlap with something in a crontab, possibly.
+
+h3. thinking_sphinx
+
+Only takes on one responsibility: creating a directory that looks like it'll hold PID files.  It also attempts to discriminate to only select for a particular application name.
+
+h4. Notes
+
+This cookbook will need probably two dozen responsibilities added to it before I'd be satisfied.
+
+Sphinx and its plugins are notorious for being much easier to develop and use than it is to support in production, and we need to get there.  Sphinx will not come out of the box on EY for the indeterminate future, and so to prepare for the worst case scenario, these cookbooks will need significant work.
