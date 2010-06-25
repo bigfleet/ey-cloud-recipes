@@ -1,0 +1,26 @@
+Responsibilities gathered from codebase review:
+
+h2. AMQP:
+
+* Comprehend server location
+* Possibly start a server for a CI/Staging/UAT environment
+* Ensure above server stays running, if applicable
+* Write configuration file correctly
+* Symlink
+
+h2. bill_consumer
+
+* Comprehend service location
+* Write correct configuration file
+* Symlink
+
+h2. environments/*
+
+* Comprehend E20Weather service location
+* Write correct configuration file
+* SMTP
+* ExceptionNotifier
+
+h3. Notes
+
+Move the majority of this configurations to initializers.  Chef can overwrite them, as configuration should be its responsibility (e.g. database.yml.example)
