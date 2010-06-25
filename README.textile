@@ -53,3 +53,6 @@ It would be better if the recipe were more explicit about the particular gem, an
 
 This cookbook should be about supplementing EY's memcached cookbook (which they will actually support) by ensuring that the application has the ability to write a proper configuration before symlinking it.
 
+h2. Miscellany
+
+I've removed a libmemcached cookbook that was meant to provide a 'memcat' command.  I can train any interested staff on the use of busybox telnet in conjunction with memcached to provide the same results.  There's no need to build in a dependency on source for this diagnostic.
