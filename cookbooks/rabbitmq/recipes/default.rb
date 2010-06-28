@@ -28,16 +28,16 @@ if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
     action :install
   end
 
-  service "rabbitmq-server" do
-    supports :status => true, :restart => true, :reload => true
-    action [ :enable, :start ]
-  end
+  # service "rabbitmq-server" do
+  #   supports :status => true, :restart => true, :reload => true
+  #   action [ :enable, :start ]
+  # end
 
   template "/etc/rabbitmq/rabbitmq.config" do
     source "rabbitmq.config.erb"
     owner "root"
     group "root"
     mode 0644
-    notifies :restart, resources(:service => "rabbitmq-server")
+    # notifies :restart, resources(:service => "rabbitmq-server")
   end
 end
