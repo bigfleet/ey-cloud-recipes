@@ -24,7 +24,7 @@ if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
     version "0.17"
   end
 
-  package "rabbitmq-server" do
+  package "net-misc/rabbitmq-server" do
     action :install
   end
 
