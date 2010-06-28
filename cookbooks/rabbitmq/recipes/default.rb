@@ -44,4 +44,18 @@ if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
     mode 0644
     notifies :restart, resources(:service => "rabbitmq-server")
   end
+  
+  template "/etc/monit.d/rabbitmq.monitrc" do
+    source "rabbitmq.monitrc.erb"
+    owner "root"
+    group "root"
+    mode 0644
+  end
+  
+  bash "monit-reload-restart" do
+    user "root"
+    code "/usr/bin/monit reload && /usr/bin/monit start all"
+    #code "pkill -9 monit && monit"
+  end
+  
 end
