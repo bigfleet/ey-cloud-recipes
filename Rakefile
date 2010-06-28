@@ -12,6 +12,13 @@ task :test do
   end
 end
 
+desc "Publish cookbooks and run them"
+task :publish do
+  sh %{ey recipes upload --environment fp_calc_dev}
+  sh %{ey recipes apply --environment fp_calc_dev}
+end
+
+
 desc "By default, run rake test"
 task :default => [ :test ]
 

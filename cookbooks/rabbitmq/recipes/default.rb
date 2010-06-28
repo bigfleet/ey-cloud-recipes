@@ -18,15 +18,12 @@
 #
 
 if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
+    
+  execute "install-rabbitmq" do
+    command 'emerge net-misc/rabbitmq-server'
+    not_if "ls /usr/sbin/rabbitmq-server"
+  end  
   
-  package "sys-apps/ey-monit-scripts" do
-    action :install
-    version "0.17"
-  end
-
-  package "net-misc/rabbitmq-server" do
-    action :install
-  end
 
   # service "rabbitmq-server" do
   #   supports :status => true, :restart => true, :reload => true
