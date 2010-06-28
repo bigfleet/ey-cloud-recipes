@@ -32,6 +32,13 @@ if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
   #   supports :status => true, :restart => true, :reload => true
   #   action [ :enable, :start ]
   # end
+  
+  directory "/etc/rabbitmq" do
+    owner "root"
+    group "root"
+    mode 0755
+    recursive true
+  end  
 
   template "/etc/rabbitmq/rabbitmq.config" do
     source "rabbitmq.config.erb"
