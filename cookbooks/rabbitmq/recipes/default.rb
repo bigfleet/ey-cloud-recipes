@@ -42,7 +42,7 @@ if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
     owner "root"
     group "root"
     mode 0644
-    notifies :restart, resources(:service => "rabbitmq-server")
+    notifies :restart, resources(:service => "rabbitmq")
   end
   
   template "/etc/monit.d/rabbitmq.monitrc" do
