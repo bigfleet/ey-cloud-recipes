@@ -25,10 +25,10 @@ if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
   end  
   
 
-  # service "rabbitmq-server" do
-  #   supports :status => true, :restart => true, :reload => true
-  #   action [ :enable, :start ]
-  # end
+  service "rabbitmq-server" do
+    supports :status => true, :restart => true, :reload => true
+    action [ :enable, :start ]
+  end
   
   directory "/etc/rabbitmq" do
     owner "root"
@@ -42,6 +42,6 @@ if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
     owner "root"
     group "root"
     mode 0644
-    # notifies :restart, resources(:service => "rabbitmq-server")
+    notifies :restart, resources(:service => "rabbitmq-server")
   end
 end
