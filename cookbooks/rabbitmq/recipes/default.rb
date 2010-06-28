@@ -17,19 +17,27 @@
 # limitations under the License.
 #
 
-package "rabbitmq-server" do
-  action :install
-end
+if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
+  
+  package "sys-apps/ey-monit-scripts" do
+    action :install
+    version "0.17"
+  end
 
-service "rabbitmq-server" do
-  supports :status => true, :restart => true, :reload => true
-  action [ :enable, :start ]
-end
+  package "rabbitmq-server" do
+    action :install
+  end
 
-template "/etc/rabbitmq/rabbitmq.config" do
-  source "rabbitmq.config.erb"
-  owner "root"
-  group "root"
-  mode 0644
-  notifies :restart, resources(:service => "rabbitmq-server")
+  service "rabbitmq-server" do
+    supports :status => true, :restart => true, :reload => true
+    action [ :enable, :start ]
+  end
+
+  template "/etc/rabbitmq/rabbitmq.config" do
+    source "rabbitmq.config.erb"
+    owner "root"
+    group "root"
+    mode 0644
+    notifies :restart, resources(:service => "rabbitmq-server")
+  end
 end

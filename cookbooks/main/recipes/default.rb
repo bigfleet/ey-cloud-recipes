@@ -5,3 +5,4 @@ execute "testing" do
 end
 
 #require_recipe 'climateculture_config'
+require_recipe 'rabbitmq'
