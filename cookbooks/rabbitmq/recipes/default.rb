@@ -56,6 +56,6 @@ if node[:instance_role] == "solo" || node[:name] =~ /rabbit/
     user "root"
     code "/usr/bin/monit reload && /usr/bin/monit start all"
     #code "pkill -9 monit && monit"
-  end au
+  end
   
 end
