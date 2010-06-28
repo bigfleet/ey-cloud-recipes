@@ -12,7 +12,7 @@ h2. bill_consumer
 
 * Comprehend service location
 * Write correct configuration file
-* Symlink
+* Symlinker
 
 h2. environments/*
 
